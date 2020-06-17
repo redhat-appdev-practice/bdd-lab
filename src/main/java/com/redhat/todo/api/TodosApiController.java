@@ -1,5 +1,6 @@
 package com.redhat.todo.api;
 
+import com.redhat.todo.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,9 +28,8 @@ import com.redhat.todo.repository.TodoRepository;
 @Controller
 @RequestMapping("${openapi.todo.base-path:/v1}")
 public class TodosApiController implements TodosApi {
-
     @Autowired
-    TodoRepository todoRepository;
+    TodoService todoService;
 
     private final NativeWebRequest request;
 
@@ -46,33 +46,26 @@ public class TodosApiController implements TodosApi {
     @Override
     public ResponseEntity<List<Todo>> getTodos(@RequestParam(value = "completed", required = false, defaultValue = "false") @Valid Boolean completed) {
         //TODO: Check if completed is null and return all values instead of defaulting it to false
-        return ResponseEntity.ok(todoRepository.getByCompleted(completed));
+        return todoService.getTodos(completed);
     }
 
     @Override
     public ResponseEntity<Todo> getTodo(@ApiParam(value = "A unique identifier for a `todo`.",required=true) @PathVariable("todoId") Integer todoId)  {
-        return ResponseEntity.ok(todoRepository.findById(todoId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
+        return todoService.getTodo(todoId);
     }
 
     @Override
     public ResponseEntity<Void> createTodo(@Valid  @RequestBody Todo todo) {
-        System.out.println(todo);
-        todoRepository.save(todo);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        return todoService.createTodo(todo);
     }
 
     @Override
     public ResponseEntity<Void> updateTodo(@ApiParam(value = "A unique identifier for a `todo`.",required=true) @PathVariable("todoId") Integer todoId,@ApiParam(value = "Updated `todo` information." ,required=true )  @Valid @RequestBody Todo todo) {
-        //TODO: Add validation todo item exist and throw a 404 if missing
-        todo.setId(todoId);
-        todoRepository.save(todo);
-        return ResponseEntity.accepted().build();
+        return todoService.updateTodo(todoId, todo);
     }
 
     @Override
     public ResponseEntity<Void> deleteTodo(@ApiParam(value = "A unique identifier for a `todo`.",required=true) @PathVariable("todoId") Integer todoId)  {
-        todoRepository.deleteById(todoId);
-        return ResponseEntity.noContent().build();
+        return todoService.deleteTodo(todoId);
     }
 }
