@@ -31,18 +31,6 @@ public class TodosApiController implements TodosApi {
     @Autowired
     TodoService todoService;
 
-    private final NativeWebRequest request;
-
-    @org.springframework.beans.factory.annotation.Autowired
-    public TodosApiController(NativeWebRequest request) {
-        this.request = request;
-    }
-
-    @Override
-    public Optional<NativeWebRequest> getRequest() {
-        return Optional.ofNullable(request);
-    }
-
     @Override
     public ResponseEntity<List<Todo>> getTodos(@RequestParam(value = "completed", required = false, defaultValue = "false") @Valid Boolean completed) {
         //TODO: Check if completed is null and return all values instead of defaulting it to false

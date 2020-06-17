@@ -1,6 +1,7 @@
 package com.redhat.todo;
 
 import com.redhat.todo.api.TodosApiController;
+import com.redhat.todo.config.OpenAPIDocumentationConfig;
 import com.redhat.todo.model.Todo;
 import com.redhat.todo.repository.TodoRepository;
 import com.redhat.todo.service.TodoService;
@@ -12,6 +13,7 @@ import org.junit.Assert;
 import org.mapstruct.Context;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.test.context.SpringBootContextLoader;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.web.context.request.NativeWebRequest;
@@ -20,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-@ContextConfiguration(classes = )
+@ContextConfiguration(classes = { OpenAPI2SpringBoot.class, OpenAPIDocumentationConfig.class }, loader = SpringBootContextLoader.class )
 public class StepDefs {
 
     static Todo todo;
