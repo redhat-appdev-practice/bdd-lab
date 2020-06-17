@@ -1,28 +1,18 @@
 package com.redhat.todo;
 
-import com.redhat.todo.api.TodosApiController;
-import com.redhat.todo.config.OpenAPIDocumentationConfig;
 import com.redhat.todo.model.Todo;
-import com.redhat.todo.repository.TodoRepository;
 import com.redhat.todo.service.TodoService;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
-import org.mapstruct.Context;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.test.context.SpringBootContextLoader;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.web.context.request.NativeWebRequest;
 
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-@ContextConfiguration(classes = { OpenAPI2SpringBoot.class, OpenAPIDocumentationConfig.class }, loader = SpringBootContextLoader.class )
 public class StepDefs {
 
     static Todo todo;
@@ -30,7 +20,7 @@ public class StepDefs {
     private static final Logger LOG = Logger.getLogger( StepDefs.class.getName() );
 
     @Autowired
-    private TodoService todoService;
+    public TodoService todoService;
 
     @Given("a todo object with the following data:")
     public void a_todo_object_with_the_following_data(List<Map<String, String>> todoMap) throws Exception {

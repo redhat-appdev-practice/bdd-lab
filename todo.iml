@@ -18,6 +18,7 @@
       <configuration>
         <webroots />
         <sourceRoots>
+          <root url="file://$MODULE_DIR$/src/main/gen" />
           <root url="file://$MODULE_DIR$/src/main/java" />
           <root url="file://$MODULE_DIR$/src/main/resources" />
         </sourceRoots>
@@ -108,11 +109,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.0.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aspects:5.0.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.h2database:h2:1.4.200" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:cucumber-java8:4.2.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:cucumber-java:4.2.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: net.jodah:typetools:0.5.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:cucumber-spring:4.2.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:cucumber-junit:4.2.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:cucumber-core:4.2.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:cucumber-html:0.2.7" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:gherkin:5.1.0" level="project" />
@@ -120,6 +116,11 @@
     <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:cucumber-expressions:6.2.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:datatable:1.1.7" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:datatable-dependencies:1.1.7" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:cucumber-java8:4.2.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:cucumber-java:4.2.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: net.jodah:typetools:0.5.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:cucumber-spring:4.2.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:cucumber-junit:4.2.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.12" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-starter-test:2.0.1.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-test:2.0.1.RELEASE" level="project" />
