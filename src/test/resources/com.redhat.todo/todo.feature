@@ -12,3 +12,9 @@ Feature: Todo
     | test | test        | false     | 2020-06-17T20:49:35.000Z |
     When I create a todo using MVC
     Then I should get a response of 201 using MVC
+  
+  Scenario: A Todo can be deleted using it's ID
+    Given a todo object exists with an id of 1
+    When I delete the todo object with an id of 1
+    And I get a todo object with an id of 1
+    Then I should get a response of 404

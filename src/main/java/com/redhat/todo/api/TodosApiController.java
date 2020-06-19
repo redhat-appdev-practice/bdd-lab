@@ -41,12 +41,12 @@ public class TodosApiController implements TodosApi {
     }
 
     @Override
-    public ResponseEntity<Void> createTodo(@Valid  @RequestBody Todo todo) {
+    public ResponseEntity<Todo> createTodo(@Valid  @RequestBody Todo todo) {
         return todoService.createTodo(todo);
     }
 
     @Override
-    public ResponseEntity<Void> updateTodo(@ApiParam(value = "A unique identifier for a `todo`.",required=true) @PathVariable("todoId") Integer todoId,@ApiParam(value = "Updated `todo` information." ,required=true )  @Valid @RequestBody Todo todo) {
+    public ResponseEntity<Todo> updateTodo(@ApiParam(value = "A unique identifier for a `todo`.",required=true) @PathVariable("todoId") Integer todoId,@ApiParam(value = "Updated `todo` information." ,required=true )  @Valid @RequestBody Todo todo) {
         return todoService.updateTodo(todoId, todo);
     }
 

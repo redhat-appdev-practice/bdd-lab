@@ -35,15 +35,15 @@ public class TodoService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
     }
 
-    public ResponseEntity<Void> createTodo(Todo todo) {
-        todoRepository.save(todo);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    public ResponseEntity<Todo> createTodo(Todo todo) {
+        Todo savedTodo = todoRepository.save(todo);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedTodo);
     }
 
-    public ResponseEntity<Void> updateTodo( Integer todoId, Todo todo) {
+    public ResponseEntity<Todo> updateTodo( Integer todoId, Todo todo) {
         todo.setId(todoId);
-        todoRepository.save(todo);
-        return ResponseEntity.accepted().build();
+        Todo savedTodo = todoRepository.save(todo);
+        return ResponseEntity.accepted().body(savedTodo);
     }
 
     public ResponseEntity<Void> deleteTodo( Integer todoId)  {

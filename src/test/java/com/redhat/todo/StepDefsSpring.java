@@ -9,6 +9,7 @@ import gherkin.deps.com.google.gson.Gson;
 import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -47,6 +48,37 @@ public class StepDefsSpring {
     @Then("^I should get a response of (\\d+)$")
     public void i_should_get_a_response_of(int expectedResponse) throws Exception {
         Assert.assertTrue(expectedResponse == response);
+    }
+
+
+    @Given("a todo object exists with an id of {int}")
+    public void an_object_exists(Integer id){
+        ResponseEntity<Todo> checkTodo = todoService.getTodo(id);
+        Assert.assertNotNull(checkTodo.getBody());
+    }
+
+    @When("I delete the todo object with an id of {int}")
+    public void delete_with_id(Integer id){
+        try {
+            ResponseEntity responseEntity = todoService.deleteTodo(id);
+            response = responseEntity.getStatusCode().value();
+        }
+        catch(ResponseStatusException e){
+            response = e.getStatus().value();
+        }
+    }
+
+    @When("I get a todo object with an id of {int}")
+    public void get_with_id(Integer id){
+        try {
+            ResponseEntity responseEntity = todoService.getTodo(id);
+            response = responseEntity.getStatusCode().value();
+
+        }
+        catch(ResponseStatusException e){
+            response = e.getStatus().value();
+        }
+
     }
 
 
