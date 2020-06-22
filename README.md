@@ -1,16 +1,16 @@
-#Behavior Driven Development
+# Behavior Driven Development
 
-##Intro
+## Intro
 In this lab we are going to look at what it takes to add test scenarios to your project to support
 Behavior Driven Development(BDD). We will be using the Cucumber library to accomplish this, for more onformation
 on that check it out [here](https://cucumber.io/).
 
-##Setup
+## Setup
 1. Checkout the base project `git clone https://github.com/redhat-appdev-practice/bdd-lab.git`
 2. Navigate to the project `cd bdd-lab`
 3. Checkout the starter branch `git checkout starter-branch`
 
-##Inspect the tests
+## Inspect the tests
 1. Take a look at our feature file, `src/test/resources/com/redhat/todo/todo.feature`
 ![](https://github.com/redhat-appdev-practice/bdd-lab/blob/main/assets/feature.PNG?raw=true)
     - Here you can see our scenarios that are defined in the Gherkin format
@@ -18,7 +18,7 @@ on that check it out [here](https://cucumber.io/).
 2. Take a look at the class that implements the human readable steps `src/test/java/com/redhat/todo/StepDefsSpring.java`
 ![](https://github.com/redhat-appdev-practice/bdd-lab/blob/main/assets/stepDefs.PNG?raw=true)
 
-##Test a New Behavior
+## Test a New Behavior
 1. To test a new behavior, the first step will be to add the new scenario to our todo.feature file:
 ```gherkin
   Scenario: A Todo can be deleted using it's ID
